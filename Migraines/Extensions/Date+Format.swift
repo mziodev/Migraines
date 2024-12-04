@@ -8,6 +8,7 @@
 import Foundation
 
 extension Date {
+    
     var monthDay: String {
         self.formatted(.dateTime.month().day())
     }
