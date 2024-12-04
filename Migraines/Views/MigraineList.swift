@@ -11,25 +11,33 @@ import SwiftUI
 struct MigraineList: View {
     @Query(sort: \Migraine.date, order: .reverse) private var migraines: [Migraine]
     
+    @State private var showingAddMigraine = false
+    
+    private func showAddMigraine() {
+        showingAddMigraine = true
+    }
+    
     var body: some View {
         NavigationStack {
             List(migraines) { migraine in
-                HStack {
-                    Text(migraine.date.monthDay)
-                    
-                    Spacer()
-                    
-                    Text(migraine.level.name)
-                    
-                    Circle()
-                        .frame(width: 22, height: 22)
-                        .foregroundStyle(migraine.level.backgroundColor)
+                NavigationLink(destination: MigraineDetails(migraine: migraine)){
+                    MigraineListRow(migraine: migraine)
                 }
             }
             .navigationTitle("Migraine list")
+            .sheet(isPresented: $showingAddMigraine) {
+                MigraineDetails(isNew: true)
+            }
             .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Button(action: showAddMigraine) {
+                        Label("Add", systemImage: "plus")
+                    }
+                }
+                
                 ToolbarItem(placement: .status) {
                     Text("\(migraines.count) migraines")
+                        .font(.caption)
                 }
             }
         }

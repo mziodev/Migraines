@@ -19,4 +19,10 @@ class Migraine {
         self.level = level
         self.notes = notes
     }
+    
+    func copy(from migrane: Migraine) {
+        self.date = migrane.date
+        self.level = migrane.level
+        self.notes = migrane.notes
+    }
 }
