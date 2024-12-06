@@ -30,4 +30,11 @@ enum MigraineLevel: Int, Codable, CaseIterable {
         case .extreme: .mgFolly
         }
     }
+    
+    var foregroundColor: Color {
+        switch self {
+        case .mild, .moderate: .black
+        case .intense, .extreme: .white
+        }
+    }
 }
