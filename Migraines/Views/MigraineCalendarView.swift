@@ -70,7 +70,6 @@ struct MigraineCalendar: View {
                 }
             }
         }
-        .frame(height: 320)
     }
 }
 
