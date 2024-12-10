@@ -5,7 +5,7 @@
 //  Created by MZiO on 9/12/24.
 //
 
-import Foundation
+import SwiftUI
 
 /// An enumeration representing the severity levels of a migraine.
 ///
@@ -34,6 +34,26 @@ enum MigraineLevel: Int, Codable, CaseIterable {
         case .moderate: String(localized: "Moderate")
         case .intense: String(localized: "Intense")
         case .extreme: String(localized: "Extreme")
+        }
+    }
+    
+    /// The background color associated with each migraine level.
+    ///
+    /// This computed property returns a `Color` value that corresponds to the
+    /// severity of the migraine. Each case of the `MigraineLevel` enum is
+    /// mapped to a specific color:
+    /// - `.mild`: Returns `mgPear` color (Hex #DCE659).
+    /// - `.moderate`: Returns `mgXanthous` color (Hex #FCBA36).
+    /// - `.intense`: Returns `mgPumpkin` color (Hex #FD7E35).
+    /// - `.extreme`: Returns `mgFolly` color (Hex #FC225C).
+    ///
+    /// - Returns: A `Color` representing the background color for the migraine level.
+    var backgroundColor: Color {
+        switch self {
+        case .mild: .mgPear
+        case .moderate: .mgXanthous
+        case .intense: .mgPumpkin
+        case .extreme: .mgFolly
         }
     }
 }
