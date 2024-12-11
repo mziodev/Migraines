@@ -52,4 +52,27 @@ class Migraine {
         self.levelID = level.rawValue
         self.notes = notes
     }
+    
+    /// Copies the properties from another `Migraine` instance to the current instance.
+    ///
+    /// This method allows you to duplicate the values of the `date`, `levelID`, and `notes` properties
+    /// from a specified `Migraine` instance. It is useful for creating a new instance with the same
+    /// attributes as an existing one or for updating the current instance with values from another instance.
+    ///
+    /// - Parameter migraine: The `Migraine` instance from which to copy the properties.
+    ///   This parameter must not be `nil`.
+    ///
+    /// ## Example
+    /// You can use the `copy(from:)` method to update an existing `Migraine` instance:
+    /// ```swift
+    /// let migraine1 = Migraine(date: Date(), level: .severe, notes: "Had a bad headache.")
+    /// let migraine2 = Migraine()
+    /// migraine2.copy(from: migraine1)
+    /// // Now migraine2 has the same properties as migraine1
+    /// ```
+    func copy(from migraine: Migraine) {
+        self.date = migraine.date
+        self.levelID = migraine.levelID
+        self.notes = migraine.notes
+    }
 }

@@ -11,7 +11,29 @@ import SwiftUI
 ///
 /// This view displays the details of a single `Migraine` instance, including
 /// the date of the migraine, its severity level, and a colored circle
-/// representing the migraine level.
+/// representing the migraine level. It is typically used within a list context,
+/// such as in the `MigraineList` view.
+///
+/// ## Properties
+/// - `migraine`: The `Migraine` instance to be displayed in the row. This property is required
+///   and contains the data to be shown.
+///
+/// ## Body
+/// The view consists of a horizontal stack (`HStack`) that displays:
+/// - The date of the migraine formatted as month and day.
+/// - The severity level of the migraine as text.
+/// - A colored circle that represents the migraine level's background color.
+///
+/// ## Example
+/// ```swift
+/// struct ContentView: View {
+///     var body: some View {
+///         List(migraines) { migraine in
+///             MigraineListRow(migraine: migraine)
+///         }
+///     }
+/// }
+/// ```
 struct MigraineListRow: View {
     
     /// The `Migraine` instance to be displayed in the row.
