@@ -6,8 +6,19 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		08E5925B2D0AF5CC0053B3E5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08B11BF32D074BDA004A8923 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 08B11BFA2D074BDA004A8923;
+			remoteInfo = Migraines;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		08B11BFB2D074BDA004A8923 /* Migraines.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Migraines.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		08E592572D0AF5CC0053B3E5 /* MigrainesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MigrainesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -16,10 +27,22 @@
 			path = Migraines;
 			sourceTree = "<group>";
 		};
+		08E592582D0AF5CC0053B3E5 /* MigrainesTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = MigrainesTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		08B11BF82D074BDA004A8923 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		08E592542D0AF5CC0053B3E5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -33,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				08B11BFD2D074BDA004A8923 /* Migraines */,
+				08E592582D0AF5CC0053B3E5 /* MigrainesTests */,
 				08B11BFC2D074BDA004A8923 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				08B11BFB2D074BDA004A8923 /* Migraines.app */,
+				08E592572D0AF5CC0053B3E5 /* MigrainesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +95,29 @@
 			productReference = 08B11BFB2D074BDA004A8923 /* Migraines.app */;
 			productType = "com.apple.product-type.application";
 		};
+		08E592562D0AF5CC0053B3E5 /* MigrainesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 08E5925D2D0AF5CC0053B3E5 /* Build configuration list for PBXNativeTarget "MigrainesTests" */;
+			buildPhases = (
+				08E592532D0AF5CC0053B3E5 /* Sources */,
+				08E592542D0AF5CC0053B3E5 /* Frameworks */,
+				08E592552D0AF5CC0053B3E5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				08E5925C2D0AF5CC0053B3E5 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				08E592582D0AF5CC0053B3E5 /* MigrainesTests */,
+			);
+			name = MigrainesTests;
+			packageProductDependencies = (
+			);
+			productName = MigrainesTests;
+			productReference = 08E592572D0AF5CC0053B3E5 /* MigrainesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -77,11 +125,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1610;
+				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1610;
 				TargetAttributes = {
 					08B11BFA2D074BDA004A8923 = {
 						CreatedOnToolsVersion = 16.1;
+					};
+					08E592562D0AF5CC0053B3E5 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 08B11BFA2D074BDA004A8923;
 					};
 				};
 			};
@@ -100,12 +152,20 @@
 			projectRoot = "";
 			targets = (
 				08B11BFA2D074BDA004A8923 /* Migraines */,
+				08E592562D0AF5CC0053B3E5 /* MigrainesTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		08B11BF92D074BDA004A8923 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		08E592552D0AF5CC0053B3E5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +182,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		08E592532D0AF5CC0053B3E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		08E5925C2D0AF5CC0053B3E5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 08B11BFA2D074BDA004A8923 /* Migraines */;
+			targetProxy = 08E5925B2D0AF5CC0053B3E5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		08B11C072D074BDC004A8923 /* Debug */ = {
@@ -316,6 +391,44 @@
 			};
 			name = Release;
 		};
+		08E5925E2D0AF5CC0053B3E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZP4QTMB37S;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.mzio.MigrainesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Migraines.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Migraines";
+			};
+			name = Debug;
+		};
+		08E5925F2D0AF5CC0053B3E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZP4QTMB37S;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.mzio.MigrainesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Migraines.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Migraines";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -333,6 +446,15 @@
 			buildConfigurations = (
 				08B11C0A2D074BDC004A8923 /* Debug */,
 				08B11C0B2D074BDC004A8923 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		08E5925D2D0AF5CC0053B3E5 /* Build configuration list for PBXNativeTarget "MigrainesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				08E5925E2D0AF5CC0053B3E5 /* Debug */,
+				08E5925F2D0AF5CC0053B3E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
