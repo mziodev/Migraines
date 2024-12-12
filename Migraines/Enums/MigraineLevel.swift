@@ -56,4 +56,23 @@ enum MigraineLevel: Int, Codable, CaseIterable {
         case .extreme: .mgFolly
         }
     }
+    
+    /// The foreground color associated with each migraine level.
+    ///
+    /// This computed property returns a `Color` value that is suitable for
+    /// text or other foreground elements displayed on the background color
+    /// associated with the migraine level. The color is chosen to ensure good
+    /// contrast and readability:
+    /// - `.mild` and `.moderate`: Returns black for better visibility on
+    /// lighter backgrounds.
+    /// - `.intense` and `.extreme`: Returns white for better visibility on
+    /// darker backgrounds.
+    ///
+    /// - Returns: A `Color` representing the foreground color for the migraine level.
+    var foregroundColor: Color {
+        switch self {
+        case .mild, .moderate: .black
+        case .intense, .extreme: .white
+        }
+    }
 }
