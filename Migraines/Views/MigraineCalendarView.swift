@@ -21,6 +21,11 @@ import SwiftUI
 /// - `currentMonth`: A binding to the currently displayed month (1-12).
 /// - `currentYear`: A binding to the currently displayed year.
 ///
+/// ## State Properties:
+/// - `selectedDay`: An optional string representing the currently selected day.
+/// - `showingAddMigraine`: A boolean indicating whether the add migraine view
+///   should be presented.
+///
 /// ## Private Properties:
 /// - `gridColumns`: An array of `GridItem` used to define the layout of the
 ///   calendar grid, with 7 columns representing the days of the week.
@@ -34,6 +39,9 @@ import SwiftUI
 ///   current month.
 /// - `calendarSymbols`: A combined array of weekday initials, days before the
 ///   current month, and days in the current month, used to populate the grid.
+///
+/// ## Functions:
+/// - `createDate(from:)`: Creates a `Date` object from the given day string.
 ///
 /// ## Body:
 /// The body of the view consists of a lazy vertical grid that displays each
@@ -53,6 +61,9 @@ struct MigraineCalendar: View {
     
     @Binding var currentMonth: Int
     @Binding var currentYear: Int
+    
+    @State private var selectedDay: String?
+    @State private var showingAddMigraine: Bool = false
     
     private let gridColumns: [GridItem] = Array(
         repeating: GridItem(),
@@ -88,29 +99,62 @@ struct MigraineCalendar: View {
         weekdaysFirstLetter + daysBeforeCurrentMonth + daysInCurrentMonth
     }
     
+    private func createDate(from day: String) -> Date? {
+        Calendar.current.date(
+            from: DateComponents(
+                year: currentYear,
+                month: currentMonth,
+                day: Int(day)
+            )
+        )
+    }
+    
     var body: some View {
-        LazyVGrid(columns: gridColumns) {
-            ForEach(calendarSymbols.indices, id: \.self) { index in
-                let calendarSymbol = calendarSymbols[index]
-                
-                if weekdaysFirstLetter.contains(calendarSymbol) {
-                    MigraineCalendarWeekdayGridItem(
-                        calendarSymbol: calendarSymbol
-                    )
-                } else {
-                    if let migraine = currentMonthMigraines.first(where: { String($0.date.day) == calendarSymbol }) {
-                        MigraineCalendarMigraineGridItem(
-                            calendarSymbol: calendarSymbol,
-                            migraineLevel: migraine.level
+        NavigationStack {
+            LazyVGrid(columns: gridColumns) {
+                ForEach(calendarSymbols.indices, id: \.self) { index in
+                    let calendarSymbol = calendarSymbols[index]
+                    
+                    if weekdaysFirstLetter.contains(calendarSymbol) {
+                        MigraineCalendarWeekdayGridItem(
+                            calendarSymbol: calendarSymbol
                         )
                     } else {
-                        Text(calendarSymbol)
-                            .padding(.vertical, 15)
+                        if let migraine = currentMonthMigraines.first(where: { String($0.date.day) == calendarSymbol }) {
+                            NavigationLink {
+                                MigraineDetailsView(migraine: migraine)
+                            } label: {
+                                MigraineCalendarMigraineGridItem(
+                                    calendarSymbol: calendarSymbol,
+                                    migraineLevel: migraine.level
+                                )
+                            }
+                        } else {
+                            Text(calendarSymbol)
+                                .padding(.vertical, 15)
+                                .onTapGesture {
+                                    selectedDay = calendarSymbol
+                                }
+                        }
                     }
                 }
             }
+            .frame(maxHeight: 420)
+            .sheet(isPresented: $showingAddMigraine) {
+                if let day = selectedDay,
+                    let date = createDate(from: day) {
+                    MigraineDetailsView(
+                        migraine: Migraine(date: date),
+                        isNew: true
+                    )
+                }
+            }
+            .onChange(of: selectedDay) { oldVlue, newValue in
+                if newValue != nil {
+                    showingAddMigraine = true
+                }
+            }
         }
-        .frame(height: 320)
     }
 }
 

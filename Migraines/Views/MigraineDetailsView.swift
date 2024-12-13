@@ -94,6 +94,7 @@ struct MigraineDetailsView: View {
                     DatePicker(
                         "Migraine date",
                         selection: $migraine.date,
+                        in: Date.distantPast...Date.now,
                         displayedComponents: .date
                     )
                     .datePickerStyle(.graphical)
