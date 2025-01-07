@@ -30,6 +30,7 @@ struct ContentView: View {
     @State private var currentMonth = Calendar.current.component(.month, from: .now)
     @State private var currentYear = Calendar.current.component(.year, from: .now)
     @State private var showingAddMigrane: Bool = false
+    @State private var showingPalliativeList = false
     
     private let monthSymbols = Calendar.current.monthSymbols
     
@@ -39,6 +40,14 @@ struct ContentView: View {
     
     private func addMigraine() {
         showingAddMigrane = true
+    }
+    
+    private func showPalliativeList() {
+        showingPalliativeList = true
+    }
+    
+    private func rateThisApp() {
+        // more code to come
     }
     
     var body: some View {
@@ -72,6 +81,20 @@ struct ContentView: View {
             .navigationTitle(contentViewTitle)
             .sheet(isPresented: $showingAddMigrane) {
                 MigraineDetailsView(isNew: true)
+            }
+            .sheet(isPresented: $showingPalliativeList) {
+                PalliativeList()
+            }
+            .toolbar {
+                Menu("Menu", systemImage: "ellipsis.circle") {
+                    Button(action: showPalliativeList) {
+                        Label("My palliatives", systemImage: "pills")
+                    }
+                    
+                    Button(action: rateThisApp) {
+                        Label("Rate this app", systemImage: "star")
+                    }
+                }
             }
         }
     }
