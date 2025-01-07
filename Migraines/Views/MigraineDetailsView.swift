@@ -54,7 +54,8 @@ struct MigraineDetailsView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var modelContext
     
-    @State var migraine: Migraine
+    @Bindable var migraine: Migraine
+    
     @State private var originalMigraine: Migraine = Migraine()
     @State private var isMigraineSaved: Bool = false
     @State private var showingDeleteAlert: Bool = false
@@ -114,7 +115,10 @@ struct MigraineDetailsView: View {
                             .foregroundStyle(migraine.level.backgroundColor)
                     }
                     
-                    Picker("Migraine level", selection: $migraine.levelID) {
+                    Picker(
+                        "Migraine level",
+                        selection: $migraine.levelID
+                    ) {
                         ForEach(1..<5, id: \.self) { level in
                             Text("\(level)")
                         }

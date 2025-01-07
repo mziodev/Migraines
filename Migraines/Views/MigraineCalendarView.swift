@@ -78,7 +78,9 @@ struct MigraineCalendar: View {
         case .monday:
             return weekdays.map { $0.firstLetter }
         case .sunday:
-            return [Weekday.sunday.firstLetter] + weekdays.dropLast().map({ $0.firstLetter })
+            return [Weekday.sunday.firstLetter] + weekdays.dropLast().map {
+                $0.firstLetter
+            }
         default:
             return []
         }
