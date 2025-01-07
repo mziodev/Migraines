@@ -16,8 +16,8 @@ final class Palliative {
     var concentration: Double
     var concentrationUnits: ConcentrationUnits
     
-//    @Relationship(deleteRule: .cascade, inverse: \PalliativeDose.palliative)
-//    var doses: [PalliativeDose] = []
+    @Relationship(deleteRule: .cascade, inverse: \PalliativeDose.palliative)
+    var doses: [PalliativeDose] = []
     
     init(
         name: String = "",

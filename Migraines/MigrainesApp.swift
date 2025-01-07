@@ -14,6 +14,8 @@ struct MigrainesApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Migraine.self,
+            Palliative.self,
+            PalliativeDose.self,
         ])
         
         let modelConfiguration = ModelConfiguration(
