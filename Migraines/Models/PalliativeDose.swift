@@ -10,6 +10,7 @@ import SwiftData
 
 @Model
 final class PalliativeDose {
+
     var amount: Double
 
     @Relationship var palliative: Palliative?
@@ -22,11 +23,12 @@ final class PalliativeDose {
     ) {
         self.amount = amount
     }
-}
-
-extension PalliativeDose {
+    
     func copy(from palliativeDose: PalliativeDose) {
         self.amount = palliativeDose.amount
-        self.palliative = palliativeDose.palliative
+        
+        if let palliative = palliativeDose.palliative {
+            self.palliative = palliative
+        }
     }
 }

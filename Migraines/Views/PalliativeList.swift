@@ -65,25 +65,3 @@ struct PalliativeList: View {
     PalliativeList()
         .modelContainer(SampleData.shared.modelContainer)
 }
-
-struct PalliativeListToSelectFromRow: View {
-    
-    let palliative: Palliative
-    
-    var selectedPalliative: Palliative?
-    
-    var body: some View {
-        HStack {
-            PalliativeListBasicRow(palliative: palliative)
-            
-            Spacer()
-            
-            Image(systemName: "checkmark.circle")
-                .foregroundStyle(
-                    selectedPalliative == palliative ? .accent : .secondary
-                        .opacity(0.5)
-                )
-        }
-        .contentShape(Rectangle())
-    }
-}

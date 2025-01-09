@@ -56,9 +56,11 @@ struct MigraineDetailsView: View {
     
     @Bindable var migraine: Migraine
     
-    @State private var originalMigraine: Migraine = Migraine()
-    @State private var isMigraineSaved: Bool = false
-    @State private var showingDeleteAlert: Bool = false
+    @State private var originalMigraine = Migraine()
+    
+    @State private var isMigraineSaved = false
+    @State private var showingDeleteAlert = false
+    @State private var showingAddPalliative = false
     
     let isNew: Bool
     
@@ -86,6 +88,10 @@ struct MigraineDetailsView: View {
     private func deleteMigraine() {
         modelContext.delete(migraine)
         dismiss()
+    }
+    
+    private func addPalliative() {
+        showingAddPalliative = true
     }
     
     var body: some View {
@@ -126,6 +132,26 @@ struct MigraineDetailsView: View {
                     .pickerStyle(.palette)
                 }
                 
+                Section("Palliatives") {
+                    if !migraine.palliativeDoses.isEmpty {
+                        ForEach(migraine.palliativeDoses) { dose in
+                            if let palliative = dose.palliative {
+                                NavigationLink {
+                                    PalliativeDoseDetailsView(
+                                        palliativeDose: dose
+                                    )
+                                } label: {
+                                    PalliativeListBasicRow(
+                                        palliative: palliative
+                                    )
+                                }
+                            }
+                        }
+                    }
+                    
+                    Button("Add palliative", action: addPalliative)
+                }
+                
                 Section("Notes") {
                     TextField(
                         "Write how you felt...",
@@ -160,6 +186,9 @@ struct MigraineDetailsView: View {
                     migraine.copy(from: originalMigraine)
                 }
             }
+            .sheet(isPresented: $showingAddPalliative) {
+                PalliativeDoseDetailsView(migraine: migraine, isNew: true)
+            }
             .alert(
                 "Warning!",
                 isPresented: $showingDeleteAlert,
@@ -186,8 +215,10 @@ struct MigraineDetailsView: View {
 
 #Preview("New migraine") {
     MigraineDetailsView(isNew: true)
+        .modelContainer(SampleData.shared.modelContainer)
 }
 
 #Preview("Existing migraine") {
     MigraineDetailsView(migraine: SampleData.shared.migraine)
+        .modelContainer(SampleData.shared.modelContainer)
 }
