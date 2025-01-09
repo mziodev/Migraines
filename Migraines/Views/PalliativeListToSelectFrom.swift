@@ -64,8 +64,14 @@ struct PalliativeListToSelectFrom: View {
                 
                 ToolbarItem(placement: .primaryAction) {
                     Button(action: addPalliative) {
-                        Label("Add palliative", systemImage: "plus")
+                        Label("Add Palliative", systemImage: "plus")
                     }
+                }
+                
+                ToolbarItem(placement: .status) {
+                    Text("\(palliatives.count) palliatives")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
                 }
             }
         }

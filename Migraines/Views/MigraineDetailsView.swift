@@ -149,7 +149,16 @@ struct MigraineDetailsView: View {
                         }
                     }
                     
-                    Button("Add palliative", action: addPalliative)
+                    HStack {
+                        Spacer()
+                        
+                        Button("Add Palliative Dose", action: addPalliative)
+                            .font(.headline)
+                            .foregroundStyle(.white)
+                        
+                        Spacer()
+                    }
+                    .listRowBackground(Color.accent)
                 }
                 
                 Section("Notes") {
