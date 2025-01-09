@@ -16,7 +16,13 @@ struct PalliativeListToSelectFrom: View {
     
     @State var palliativeDose: PalliativeDose
     
+    @State private var showingAddPalliative = false
+    
     @Binding var isPalliativeChanged: Bool
+    
+    private func addPalliative() {
+        showingAddPalliative = true
+    }
     
     private func saveSelectedPalliative(palliative: Palliative) {
         palliativeDose.palliative = palliative
@@ -48,9 +54,18 @@ struct PalliativeListToSelectFrom: View {
                     }
                 }
             }
+            .sheet(isPresented: $showingAddPalliative) {
+                PalliativeDetailsView(isNew: true)
+            }
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Done", action: dismissView)
+                }
+                
+                ToolbarItem(placement: .primaryAction) {
+                    Button(action: addPalliative) {
+                        Label("Add palliative", systemImage: "plus")
+                    }
                 }
             }
         }

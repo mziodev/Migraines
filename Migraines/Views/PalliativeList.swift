@@ -17,7 +17,7 @@ struct PalliativeList: View {
     
     @State private var showingAddPalliative = false
     
-    private func cancelPalliativeList() {
+    private func dismissView() {
         dismiss()
     }
     
@@ -41,8 +41,8 @@ struct PalliativeList: View {
                 PalliativeDetailsView(isNew: true)
             }
             .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel", action: cancelPalliativeList)
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Done", action: dismissView)
                 }
                 
                 ToolbarItem(placement: .primaryAction) {
