@@ -82,6 +82,7 @@ struct PalliativeDetailsView: View {
                             value: $palliative.concentration,
                             format: .number
                         )
+                        .keyboardType(.decimalPad)
                         
                         Picker(
                             "",

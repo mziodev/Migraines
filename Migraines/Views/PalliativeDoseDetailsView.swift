@@ -94,6 +94,7 @@ struct PalliativeDoseDetailsView: View {
                         value: $palliativeDose.amount,
                         format: .number
                     )
+                    .keyboardType(.decimalPad)
                     .overlay(alignment: .trailing) {
                         if let palliative = palliativeDose.palliative {
                             Text(palliative.format.measurementUnit)
