@@ -37,6 +37,11 @@ struct PalliativeList: View {
                 }
             }
             .navigationTitle("My palliatives")
+            .overlay {
+                if palliatives.isEmpty {
+                    PalliativeListEmptyView()
+                }
+            }
             .sheet(isPresented: $showingAddPalliative) {
                 PalliativeDetailsView(isNew: true)
             }
@@ -51,17 +56,45 @@ struct PalliativeList: View {
                     }
                 }
                 
-                ToolbarItem(placement: .status) {
-                    Text("\(palliatives.count) palliatives")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
+                if !palliatives.isEmpty {
+                    ToolbarItem(placement: .status) {
+                        Text("\(palliatives.count) palliatives")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
                 }
             }
         }
     }
 }
 
-#Preview {
+#Preview("Withou any palliatives") {
+    PalliativeList()
+}
+
+#Preview("With some palliatives") {
     PalliativeList()
         .modelContainer(SampleData.shared.modelContainer)
+}
+
+struct PalliativeListEmptyView: View {
+    var body: some View {
+        VStack(spacing: 10) {
+            Image(systemName: "cross.case")
+                .font(.system(size: 60))
+                .foregroundStyle(.accent.opacity(0.4))
+            
+            VStack(spacing: 5) {
+                Text("No palliatives yet")
+                    .font(.title2)
+                    .bold()
+                
+                Text(
+                    "Tap the plus button above to add a new palliative."
+                )
+                .font(.caption)
+                .foregroundStyle(.secondary)
+            }
+        }
+    }
 }
