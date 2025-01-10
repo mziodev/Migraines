@@ -141,9 +141,26 @@ struct MigraineDetailsView: View {
                                         palliativeDose: dose
                                     )
                                 } label: {
-                                    PalliativeListBasicRow(
-                                        palliative: palliative
-                                    )
+                                    HStack {
+                                        PalliativeListBasicRow(
+                                            palliative: palliative
+                                        )
+                                        
+                                        Spacer()
+                                        
+                                        HStack(alignment: .bottom, spacing: 2) {
+                                            Text(dose.amount, format: .number)
+                                                .font(.title3)
+                                                .fontDesign(.rounded)
+                                            
+                                            Text(
+                                                palliative.format.measurementUnit
+                                            )
+                                            .font(.caption)
+                                            .foregroundStyle(.secondary)
+                                            .padding(.bottom, 2)
+                                        }
+                                    }
                                 }
                             }
                         }
