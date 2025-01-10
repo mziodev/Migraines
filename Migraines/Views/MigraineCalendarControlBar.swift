@@ -46,6 +46,10 @@ struct MigraineCalendarControlBar: View {
     @Binding var currentMonth: Int
     @Binding var currentYear: Int
     
+    private var isCurrentMonthActualMonth: Bool {
+        currentMonth == Calendar.current.component(.month, from: .now)
+    }
+    
     private func decreaseMonth() {
         withAnimation {
             currentMonth = currentMonth == 1 ? 12 : currentMonth - 1
@@ -78,6 +82,7 @@ struct MigraineCalendarControlBar: View {
             Button(action: jumpToCurrentMonth) {
                 Image(systemName: "record.circle")
             }
+            .disabled(isCurrentMonthActualMonth)
             
             Spacer()
             
@@ -90,7 +95,14 @@ struct MigraineCalendarControlBar: View {
     }
 }
 
-#Preview {
+#Preview("Actual month") {
+    MigraineCalendarControlBar(
+        currentMonth: .constant(1),
+        currentYear: .constant(2025)
+    )
+}
+
+#Preview("Random month") {
     MigraineCalendarControlBar(
         currentMonth: .constant(10),
         currentYear: .constant(2024)

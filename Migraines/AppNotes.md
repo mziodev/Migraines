@@ -4,5 +4,3 @@
 
 ## add a sign on calendar to migraines with palliative doses: a dot, underline, colored number...
 
-## fix the current month button on calendar for showing no color when current month in calendar is equal to actual current month.
-
