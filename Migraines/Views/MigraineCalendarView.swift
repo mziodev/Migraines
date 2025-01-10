@@ -130,6 +130,16 @@ struct MigraineCalendar: View {
                                     calendarSymbol: calendarSymbol,
                                     migraineLevel: migraine.level
                                 )
+                                .overlay(alignment: .topTrailing) {
+                                    if !migraine.palliativeDoses.isEmpty {
+//                                        Circle()
+//                                            .stroke(lineWidth: 5)
+//                                            .foregroundStyle(.mgJade)
+                                        Circle()
+                                            .frame(width: 15, height: 15)
+                                            .foregroundStyle(.mgJade.opacity(0.9 ))
+                                    }
+                                }
                             }
                         } else {
                             Text(calendarSymbol)
@@ -161,6 +171,6 @@ struct MigraineCalendar: View {
 }
 
 #Preview {
-    MigraineCalendar(currentMonth: .constant(11), currentYear: .constant(2024))
+    MigraineCalendar(currentMonth: .constant(1), currentYear: .constant(2025))
         .modelContainer(SampleData.shared.modelContainer)
 }
