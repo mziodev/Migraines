@@ -30,10 +30,10 @@ enum MigraineLevel: Int, Codable, CaseIterable {
     /// in a localized format, suitable for display in the user interface.
     var localizedName: String {
         switch self {
-        case .mild: String(localized: "Mild")
-        case .moderate: String(localized: "Moderate")
-        case .intense: String(localized: "Intense")
-        case .extreme: String(localized: "Extreme")
+        case .mild: String(localized: "Mild", comment: "Feminine, like migraine")
+        case .moderate: String(localized: "Moderate", comment: "Feminine, like migraine")
+        case .intense: String(localized: "Intense", comment: "Feminine, like migraine")
+        case .extreme: String(localized: "Extreme", comment: "Feminine, like migraine")
         }
     }
     

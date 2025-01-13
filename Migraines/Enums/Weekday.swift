@@ -40,13 +40,13 @@ enum Weekday: String, CaseIterable {
     /// Returns the first letter of the weekday as a localized string.
     var firstLetter: String {
         switch self {
-        case .monday: String(localized: "M")
-        case .tuesday: String(localized: "T")
-        case .wednesday: String(localized: "W")
-        case .thursday: String(localized: "T")
-        case .friday: String(localized: "F")
-        case .saturday: String(localized: "S")
-        case .sunday: String(localized: "S")
+        case .monday: String(localized: "Mon", comment: "From Monday")
+        case .tuesday: String(localized: "Tue", comment: "From Tuesday")
+        case .wednesday: String(localized: "Wed", comment: "From Wednesday")
+        case .thursday: String(localized: "Thu", comment: "From Thursday")
+        case .friday: String(localized: "Fri", comment: "From Friday")
+        case .saturday: String(localized: "Sat", comment: "From Saturday")
+        case .sunday: String(localized: "Sun", comment: "From Sunday")
         }
     }
 }

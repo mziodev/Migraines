@@ -126,7 +126,7 @@ struct MigraineDetailsView: View {
                         selection: $migraine.levelID
                     ) {
                         ForEach(1..<5, id: \.self) { level in
-                            Text("\(level)")
+                            Text(level, format: .number)
                         }
                     }
                     .pickerStyle(.palette)
@@ -187,21 +187,23 @@ struct MigraineDetailsView: View {
                     .padding()
                 }
                 
-                Section {
-                    HStack {
-                        Spacer()
-                        
-                        Button(
-                            "Delete Migraine",
-                            role: .destructive,
-                            action: showDeleteAlert
-                        )
-                        .font(.headline)
-                        
-                        Spacer()
+                if !isNew {
+                    Section {
+                        HStack {
+                            Spacer()
+                            
+                            Button(
+                                "Delete Migraine",
+                                role: .destructive,
+                                action: showDeleteAlert
+                            )
+                            .font(.headline)
+                            
+                            Spacer()
+                        }
                     }
+                    .listRowBackground(Color.clear)
                 }
-                .listRowBackground(Color.clear)
             }
             .navigationTitle(isNew ? "New migraine" : "Migraine details")
             .onAppear {

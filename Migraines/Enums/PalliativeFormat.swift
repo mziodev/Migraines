@@ -32,7 +32,7 @@ enum PalliativeFormat: String, Codable, CaseIterable {
     
     var imageName: String {
         switch self {
-        case .none: String(localized: "cross.case")
+        case .none: "cross.case"
         case .capsule: "capsule.portrait.tophalf.filled"
         case .injection: "syringe.fill"
         case .liquid: "cross.vial.fill"
@@ -48,7 +48,7 @@ enum PalliativeFormat: String, Codable, CaseIterable {
         case .none: ""
         case .capsule, .suppository, .tablet, .transdermal:
             String(localized: "units")
-        case .nasal: String(localized: "spray", comment: "representing a dose")
+        case .nasal: String(localized: "sprays", comment: "representing a dose")
         case .injection, .liquid:
             String(localized: "ml")
         }
