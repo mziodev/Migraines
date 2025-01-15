@@ -179,12 +179,16 @@ struct MigraineDetailsView: View {
                 }
                 
                 Section("Notes") {
-                    TextField(
-                        "Write how you felt...",
-                        text: $migraine.notes,
-                        axis: .vertical
-                    )
-                    .padding()
+                    TextEditor(text: $migraine.notes)
+                        .autocorrectionDisabled(false)
+                        .frame(height: 150)
+                        .overlay(alignment: .topLeading) {
+                            if migraine.notes.isEmpty {
+                                Text("Write how you felt...")
+                                    .foregroundStyle(.placeholder)
+                                    .padding(5)
+                            }
+                        }
                 }
                 
                 if !isNew {
