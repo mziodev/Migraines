@@ -27,6 +27,8 @@ import SwiftUI
 ///   "Add Migraine" button allows users to input new migraine entries.
 struct ContentView: View {
     
+    @AppStorage("FirstStart") private var isFirstLaunch: Bool = true
+    
     @State private var currentMonth = Date.now.month
     @State private var currentYear = Date.now.year
     
@@ -96,6 +98,9 @@ struct ContentView: View {
             }
             .padding(.horizontal)
             .navigationTitle(contentViewTitle)
+            .sheet(isPresented: $isFirstLaunch) {
+                WelcomeView(isFirstLaunch: $isFirstLaunch)
+            }
             .sheet(isPresented: $showingAddMigrane) {
                 MigraineDetailsView(isNew: true)
             }
@@ -114,8 +119,14 @@ struct ContentView: View {
                         Label("My palliatives", systemImage: "pills")
                     }
                     
-                    Button(action: rateThisApp) {
-                        Label("Rate this app", systemImage: "star")
+                    Section {
+                        Button(action: showWhatsNewView) {
+                            Label("What's New", systemImage: "sparkles")
+                        }
+                        
+                        Button(action: rateThisApp) {
+                            Label("Rate this app", systemImage: "star")
+                        }
                     }
                     
                     Button(action: showSupportView) {
