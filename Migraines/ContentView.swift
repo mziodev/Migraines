@@ -33,6 +33,7 @@ struct ContentView: View {
     @State private var showingAddMigrane = false
     @State private var showingPalliativeList = false
     @State private var showingSupportView = false
+    @State private var showingWhatsNewView = false
     
     private let monthSymbols = Calendar.current.monthSymbols
     
@@ -50,6 +51,10 @@ struct ContentView: View {
     
     private func showSupportView() {
         showingSupportView = true
+    }
+    
+    private func showWhatsNewView() {
+        showingWhatsNewView = true
     }
     
     private func rateThisApp() {
@@ -99,6 +104,9 @@ struct ContentView: View {
             }
             .sheet(isPresented: $showingSupportView) {
                 SupportView()
+            }
+            .sheet(isPresented: $showingWhatsNewView) {
+                WhatsNewView()
             }
             .toolbar {
                 Menu("Menu", systemImage: "ellipsis.circle") {
