@@ -27,10 +27,12 @@ import SwiftUI
 ///   "Add Migraine" button allows users to input new migraine entries.
 struct ContentView: View {
     
-    @State private var currentMonth = Calendar.current.component(.month, from: .now)
-    @State private var currentYear = Calendar.current.component(.year, from: .now)
-    @State private var showingAddMigrane: Bool = false
+    @State private var currentMonth = Date.now.month
+    @State private var currentYear = Date.now.year
+    
+    @State private var showingAddMigrane = false
     @State private var showingPalliativeList = false
+    @State private var showingSupportView = false
     
     private let monthSymbols = Calendar.current.monthSymbols
     
@@ -46,8 +48,18 @@ struct ContentView: View {
         showingPalliativeList = true
     }
     
+    private func showSupportView() {
+        showingSupportView = true
+    }
+    
     private func rateThisApp() {
-        // more code to come
+        let url = URLs.writeReview
+        
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+        } else {
+            print("Could not open URL \(url)")
+        }
     }
     
     var body: some View {
@@ -85,6 +97,9 @@ struct ContentView: View {
             .sheet(isPresented: $showingPalliativeList) {
                 PalliativeList()
             }
+            .sheet(isPresented: $showingSupportView) {
+                SupportView()
+            }
             .toolbar {
                 Menu("Menu", systemImage: "ellipsis.circle") {
                     Button(action: showPalliativeList) {
@@ -93,6 +108,10 @@ struct ContentView: View {
                     
                     Button(action: rateThisApp) {
                         Label("Rate this app", systemImage: "star")
+                    }
+                    
+                    Button(action: showSupportView) {
+                        Label("Support", systemImage: "envelope")
                     }
                 }
             }
