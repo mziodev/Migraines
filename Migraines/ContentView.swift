@@ -114,23 +114,25 @@ struct ContentView: View {
                 WhatsNewView()
             }
             .toolbar {
-                Menu("Menu", systemImage: "ellipsis.circle") {
-                    Button(action: showPalliativeList) {
-                        Label("My palliatives", systemImage: "pills")
-                    }
-                    
-                    Section {
-                        Button(action: showWhatsNewView) {
-                            Label("What's New", systemImage: "sparkles")
+                ToolbarItem(placement: .primaryAction) {
+                    Menu("Menu", systemImage: "ellipsis.circle") {
+                        Button(action: showPalliativeList) {
+                            Label("My palliatives", systemImage: "pills")
                         }
                         
-                        Button(action: rateThisApp) {
-                            Label("Rate this app", systemImage: "star")
+                        Section {
+                            Button(action: showWhatsNewView) {
+                                Label("What's New", systemImage: "sparkles")
+                            }
+                            
+                            Button(action: rateThisApp) {
+                                Label("Rate this app", systemImage: "star")
+                            }
                         }
-                    }
-                    
-                    Button(action: showSupportView) {
-                        Label("Support", systemImage: "envelope")
+                        
+                        Button(action: showSupportView) {
+                            Label("Support", systemImage: "envelope")
+                        }
                     }
                 }
             }

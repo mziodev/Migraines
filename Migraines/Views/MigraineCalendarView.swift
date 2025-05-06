@@ -63,7 +63,8 @@ struct MigraineCalendar: View {
     @Binding var currentYear: Int
     
     @State private var selectedDay: String?
-    @State private var showingAddMigraine: Bool = false
+    @State private var showingAddMigraine = false
+    @State private var showingPDFReport = false
     
     private let gridColumns: [GridItem] = Array(
         repeating: GridItem(),
@@ -111,6 +112,30 @@ struct MigraineCalendar: View {
         )
     }
     
+    private func generateTemporaryPDFURL() -> URL {
+        let pdfView = PDFReportView(migraines: migraines)
+        
+        guard let data = pdfView.renderToPDF() else {
+            print("❌ PDF Rendering Failed")
+            return URL(fileURLWithPath: "") // Handle errors properly
+        }
+        
+        let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent("migraine-\(UUID().uuidString).pdf")
+        
+        do {
+            try data.write(to: tempURL)
+            print("✅ Temporary PDF saved to: \(tempURL.path)")
+            return tempURL
+        } catch {
+            print("❌ File Save Error: \(error)")
+            return URL(fileURLWithPath: "")
+        }
+    }
+    
+    private func showPDFReport() {
+        showingPDFReport = true
+    }
+    
     var body: some View {
         NavigationStack {
             LazyVGrid(columns: gridColumns) {
@@ -132,9 +157,6 @@ struct MigraineCalendar: View {
                                 )
                                 .overlay(alignment: .topTrailing) {
                                     if !migraine.palliativeDoses.isEmpty {
-//                                        Circle()
-//                                            .stroke(lineWidth: 5)
-//                                            .foregroundStyle(.mgJade)
                                         Circle()
                                             .frame(width: 15, height: 15)
                                             .foregroundStyle(.mgJade.opacity(0.9 ))
@@ -161,9 +183,30 @@ struct MigraineCalendar: View {
                     )
                 }
             }
+            .sheet(isPresented: $showingPDFReport) {
+                PDFReportFormView()
+                    .presentationDetents([.medium])
+            }
             .onChange(of: selectedDay) { oldVlue, newValue in
                 if newValue != nil {
                     showingAddMigraine = true
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+//                    ShareLink(
+//                        item: generateTemporaryPDFURL(),
+//                        preview: SharePreview(
+//                            "Migraine Report",
+//                            image: Image(systemName: "doc.text")
+//                        )
+//                    )
+                    Button(action: showPDFReport) {
+                        Label(
+                            "Migraine PDF Report",
+                            systemImage: "square.and.arrow.up"
+                        )
+                    }
                 }
             }
         }

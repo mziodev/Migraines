@@ -94,6 +94,26 @@
         }
       }
     },
+    "©%lld Mauricio Del Solar (MZiO)" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "©%lld Mauricio Del Solar (MZiO)"
+          }
+        }
+      }
+    },
+    "About Migraines" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acerca de Migrañas"
+          }
+        }
+      }
+    },
     "Add" : {
       "localizations" : {
         "es" : {
@@ -204,6 +224,9 @@
         }
       }
     },
+    "Choose Time Range" : {
+
+    },
     "Concentration" : {
       "localizations" : {
         "es" : {
@@ -220,6 +243,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Valor de concentración"
+          }
+        }
+      }
+    },
+    "Contact Us" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contáctanos"
+          }
+        }
+      }
+    },
+    "Continue" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuar"
           }
         }
       }
@@ -397,6 +440,18 @@
         }
       }
     },
+    "Last Month" : {
+
+    },
+    "Last Semester" : {
+
+    },
+    "Last Trimester" : {
+
+    },
+    "Last Year" : {
+
+    },
     "Level" : {
       "localizations" : {
         "es" : {
@@ -467,6 +522,9 @@
         }
       }
     },
+    "Migraine History" : {
+
+    },
     "Migraine level" : {
       "localizations" : {
         "es" : {
@@ -486,6 +544,15 @@
           }
         }
       }
+    },
+    "Migraine PDF Report" : {
+
+    },
+    "Migraine Report" : {
+
+    },
+    "Migraines Report" : {
+
     },
     "Mild" : {
       "comment" : "Feminine, like migraine",
@@ -536,6 +603,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mis paliativos"
+          }
+        }
+      }
+    },
+    "mziodev@gmail.com" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "mziodev@gmail.com"
           }
         }
       }
@@ -610,6 +687,16 @@
         }
       }
     },
+    "Ok" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ok"
+          }
+        }
+      }
+    },
     "OK" : {
       "localizations" : {
         "es" : {
@@ -660,12 +747,42 @@
         }
       }
     },
+    "Policies" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Políticas"
+          }
+        }
+      }
+    },
+    "Privacy Policy" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Política de Privacidad"
+          }
+        }
+      }
+    },
     "Rate this app" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Califica esta app"
+          }
+        }
+      }
+    },
+    "Report a problem or just send us some feedback." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reporta un problema o simplemente envíanos tus comentarios."
           }
         }
       }
@@ -733,6 +850,16 @@
         }
       }
     },
+    "Support" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soporte"
+          }
+        }
+      }
+    },
     "Suppository" : {
       "localizations" : {
         "es" : {
@@ -759,6 +886,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Haz tap en el botón + de arriba para añadir un nuevo paliativo."
+          }
+        }
+      }
+    },
+    "Terms of Service (EULA)" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Condiciones de Uso (EULA)"
           }
         }
       }
@@ -875,6 +1012,26 @@
         }
       }
     },
+    "Version 1.0" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versión 1.0"
+          }
+        }
+      }
+    },
+    "Version number:" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Número de versión:"
+          }
+        }
+      }
+    },
     "Warning!" : {
       "localizations" : {
         "es" : {
@@ -892,6 +1049,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mie"
+          }
+        }
+      }
+    },
+    "Welcome to Migraines" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bienvenido/a Migrañas"
+          }
+        }
+      }
+    },
+    "What's New" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Novedades"
           }
         }
       }
